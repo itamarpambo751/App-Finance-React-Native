@@ -8,11 +8,13 @@ import {
 
 const statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight + 22 : 64
 
-export function AppStatusBar() {
+export function AppStatusBar({
+    user_name
+}:{ user_name: string }) {
     return(
         <View style={styles.container}>
             <View style={styles.content}>
-            <Text style={styles.username}>Otiniel Mivo</Text>
+            <Text style={styles.username}>{user_name}</Text>
             <TouchableOpacity activeOpacity={0.9} style={styles.buttonUser}>
                 <Feather  name="user" size={27} color="#fff"/>
             </TouchableOpacity>
