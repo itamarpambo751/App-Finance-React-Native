@@ -1,6 +1,7 @@
 import {
-    View, Text, StyleSheet, FlatList
+    View, Text, StyleSheet, FlatList, TouchableOpacity
 } from "react-native"
+import { useState } from "react"
 
 const latestMovements = [
     {
@@ -40,16 +41,28 @@ function FlatListItem({ item }: {item:{
     date: string,
     type: number
 }}) {
+    const [showingValue, setShowingValue] = useState<Boolean>(false)
     return (
-        <View style={styles.flListItem}>
+        <TouchableOpacity 
+            style={styles.flListItem} 
+            onPress={() => setShowingValue(!showingValue)}
+        >
             <Text style={styles.date}>{item.date}</Text>
             <View style={styles.flListItemView}>
                 <Text style={styles.label}>{item.label}</Text>
-                <Text style={[styles.money, !item.type ? styles.green : styles.red]}>
-                    <Text style={styles.symbol}>R$</Text> {item.value.toLocaleString(3)},00
-                </Text>
+                {showingValue ? (
+                    <Text 
+                        style={[styles.money, !item.type ? styles.green : styles.red]}
+                    >
+                        R$ { !item.type ? item.value.toLocaleString(3): "-" + item.value.toLocaleString(3) },00
+                    </Text>
+                ): (
+                    <View style={
+                        [styles.notShowing, item.type ? styles.redBcg:styles.notShowing]
+                    }/>
+                )}
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -74,8 +87,8 @@ export function LatestMovements() {
 const styles = StyleSheet.create({
     container: {
         marginTop: 20,
-        paddingLeft: 16,
-        paddingRight: 16,
+        paddingLeft: 20,
+        paddingRight: 20,
     },
     textMovements: {
         fontWeight: "700",
@@ -85,7 +98,7 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     flListItem: {
-        paddingTop: 15
+        paddingTop: 20
     },
     flListItemView: {
         flexDirection: "row",
@@ -95,7 +108,7 @@ const styles = StyleSheet.create({
     date: {
         fontSize: 11,
         color: "silver",
-        marginBottom: 5
+        marginBottom: 3
     },
     label: {
         fontSize: 16
@@ -110,7 +123,16 @@ const styles = StyleSheet.create({
     red: {
         color: "#ff7f7f"
     },
+    redBcg: {
+        backgroundColor: "#ff7f7f"
+    },
     symbol: {
         color: "silver"
+    },
+    notShowing: {
+        padding: 5,
+        width: 70,
+        borderRadius: 10,
+        backgroundColor: "#70C170"
     }
 })
