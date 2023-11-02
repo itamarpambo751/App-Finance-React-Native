@@ -1,6 +1,7 @@
 import {
     View, Text, StyleSheet, FlatList, TouchableOpacity
 } from "react-native"
+
 import { useState } from "react"
 
 const latestMovements = [
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     },
     textMovements: {
         fontWeight: "700",
-        fontSize: 18
+        fontSize: 18,
     },
     flList: {
         marginTop: 10
