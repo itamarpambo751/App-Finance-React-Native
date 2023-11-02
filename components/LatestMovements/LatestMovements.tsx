@@ -19,7 +19,7 @@ const latestMovements = [
     },
     {
         id: 3,
-        label: "(BFA) Transferencia para o Lucas",
+        label: "(BFA) Transferencia / Lucas",
         value: 25000,
         date: "2022/05/02",
         type: 1
@@ -42,10 +42,12 @@ function FlatListItem({ item }: {item:{
 }}) {
     return (
         <View style={styles.flListItem}>
-            <Text>{item.date}</Text>
-            <View>
-                <Text>{item.label}</Text>
-                <Text>{item.value.toLocaleString(3)},00</Text>
+            <Text style={styles.date}>{item.date}</Text>
+            <View style={styles.flListItemView}>
+                <Text style={styles.label}>{item.label}</Text>
+                <Text style={[styles.money, !item.type ? styles.green : styles.red]}>
+                    <Text style={styles.symbol}>R$</Text> {item.value.toLocaleString(3)},00
+                </Text>
             </View>
         </View>
     )
@@ -83,6 +85,32 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     flListItem: {
-
+        paddingTop: 15
+    },
+    flListItemView: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+    date: {
+        fontSize: 11,
+        color: "silver",
+        marginBottom: 5
+    },
+    label: {
+        fontSize: 16
+    },
+    money: {
+        fontSize: 14,
+        fontWeight: "600"
+    },
+    green: {
+        color: "#70C170"
+    },
+    red: {
+        color: "#ff7f7f"
+    },
+    symbol: {
+        color: "silver"
     }
 })
