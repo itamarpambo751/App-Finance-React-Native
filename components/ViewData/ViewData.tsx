@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         color: "silver"
     },
     value: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: "600",
     },
     green: {

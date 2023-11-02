@@ -69,7 +69,7 @@ function FlatListItem({ item }: {item:{
 export function LatestMovements() {
     return (
         <View style={styles.container}>
-            <Text style={styles.textMovements}>Ultimas movimentações</Text>
+            <Text style={styles.textMovements}>Últimas movimentações</Text>
 
             <FlatList 
                 style={styles.flList} 
