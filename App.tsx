@@ -5,7 +5,7 @@ export default function App() {
   return (
     <>
       <AppStatusBar />
-      <ViewData />
+      <ViewData saldo={15320} gastos={527}/>
     </>
   );
 }

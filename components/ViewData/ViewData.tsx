@@ -2,7 +2,9 @@ import {
     View, Text, StyleSheet
 } from "react-native"
 
-export function ViewData() {
+export function ViewData({
+    saldo, gastos
+}:{ saldo: number, gastos: number }) {
     return (
         <View style={styles.container}>
             <View style={styles.content}>
@@ -10,14 +12,14 @@ export function ViewData() {
                     <Text style={styles.containerFieldDescription}>Saldo</Text>
                     <View style={styles.containerFieldView}>
                         <Text style={styles.money}>R$</Text>
-                        <Text style={[styles.value, styles.green]}>15.320,00</Text>
+                        <Text style={[styles.value, styles.green]}>{saldo.toLocaleString(3) ?? 0},00</Text>
                     </View>
                 </View>
                 <View style={styles.containerField}>
                     <Text style={styles.containerFieldDescription}>Gastos</Text>
                     <View style={styles.containerFieldView}>
                         <Text style={styles.money}>R$</Text>
-                        <Text style={[styles.value, styles.red]}>-15.320,00</Text>
+                        <Text style={[styles.value, styles.red]}>-{gastos.toLocaleString(3) ?? 0},00</Text>
                     </View>
                 </View>
             </View>
